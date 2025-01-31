@@ -1,0 +1,6 @@
+@Preqin.InvestorsApi_HostAddress = http://localhost:5140
+
+GET {{Preqin.InvestorsApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
