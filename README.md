@@ -39,7 +39,8 @@ That should start the web api, postgres database and postgres db explorer
 
 That should create the tables and insert data into the DB
 
-> cd frontend
+> cd .. && cd frontend
+> cp .env.example .env
 > npm install
 > npm start
 
