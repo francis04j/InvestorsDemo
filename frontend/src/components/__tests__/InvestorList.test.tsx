@@ -54,8 +54,8 @@ describe('InvestorList', () => {
       />
     );
 
-    expect(screen.getByTestId('investor-commitment-123')).toHaveTextContent('£150,000,000');
-    expect(screen.getByTestId('investor-commitment-456')).toHaveTextContent('£250,000,000');
+    expect(screen.getByTestId('investor-commitment-123')).toHaveTextContent('£150M');
+    expect(screen.getByTestId('investor-commitment-456')).toHaveTextContent('£250M');
   });
 
   it('calls onSelectInvestor when clicking an investor', () => {
