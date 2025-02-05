@@ -27,7 +27,7 @@ public class InvestorMapper : IInvestorMapper
         return investor.AsEnumerable().Select(Map);
     }
 
-    //for data repo backed by IQueryable, it is better to offload the aggragation to SQL server
+    //for data repo backed by IQueryable, it is better to offload the aggregation to SQL server
     private decimal GetTotalCommitments(ICollection<Commitment>? commitments)
     {
         if (commitments == null) return 0;
