@@ -1,0 +1,122 @@
+/* Variables - shared with investor-list.css */
+:root {
+    --border-radius-lg: 0.5rem;
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --spacing-base: 1rem;
+    --spacing-lg: 1.5rem;
+    --border-color: rgb(229 231 235);
+  }
+  
+  /* Base container */
+  .investor-detail {
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  
+  /* Header section */
+  .investor-detail__header {
+    padding: var(--spacing-base) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .investor-detail__header-content {
+    @apply flex items-center space-x-3;
+  }
+  
+  .investor-detail__icon {
+    @apply h-8 w-8 text-blue-500;
+  }
+  
+  .investor-detail__title-group {
+    @apply flex flex-col;
+  }
+  
+  .investor-detail__title {
+    @apply text-xl font-bold text-gray-900;
+  }
+  
+  .investor-detail__subtitle {
+    @apply text-sm text-gray-500;
+  }
+  
+  .investor-detail__id {
+    @apply text-xs text-gray-400 mt-1;
+  }
+  
+  /* Metadata section */
+  .investor-detail__metadata {
+    padding: var(--spacing-base) var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+    @apply bg-gray-50;
+  }
+  
+  .investor-detail__metadata-grid {
+    @apply grid grid-cols-2 gap-4;
+  }
+  
+  .investor-detail__metadata-item {
+    @apply flex items-center space-x-2;
+  }
+  
+  .investor-detail__metadata-icon {
+    @apply h-5 w-5 text-gray-400;
+  }
+  
+  .investor-detail__metadata-text {
+    @apply text-sm text-gray-600;
+  }
+  
+  /* Content section */
+  .investor-detail__content {
+    padding: var(--spacing-base) var(--spacing-lg);
+  }
+  
+  /* Filter */
+  .investor-detail__filter {
+    @apply mb-6 p-4 bg-blue-50 rounded-lg border-2 border-blue-200;
+  }
+  
+  .investor-detail__filter-label {
+    @apply block text-base font-bold text-blue-900 mb-3;
+  }
+  
+  .investor-detail__filter-select {
+    @apply block w-full rounded-md border-2 border-blue-300 shadow-sm 
+           focus:border-blue-500 focus:ring-blue-500 
+           text-base font-medium py-2;
+  }
+  
+  /* Total commitments */
+  .investor-detail__total {
+    @apply mb-6;
+  }
+  
+  .investor-detail__total-text {
+    @apply text-lg font-semibold text-gray-900;
+  }
+  
+  /* Commitments list */
+  .investor-detail__commitments {
+    @apply space-y-4;
+  }
+  
+  .investor-detail__commitment-item {
+    background-color: rgb(249 250 251);
+    border-radius: var(--border-radius-lg);
+    padding: var(--spacing-base);
+    border: 1px solid var(--border-color);
+  }
+  
+  .investor-detail__commitment-content {
+    @apply flex justify-between items-center;
+  }
+  
+  .investor-detail__commitment-class {
+    @apply font-medium text-gray-900;
+  }
+  
+  .investor-detail__commitment-amount {
+    @apply text-gray-900;
+  }

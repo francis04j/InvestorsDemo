@@ -1,0 +1,84 @@
+/* Variables */
+:root {
+    --border-radius-lg: 0.5rem;
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  }
+  
+  /* Base container */
+  .investor-list {
+    background-color: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+  
+/* Base container */
+.investor-list {
+    @apply bg-white rounded-lg shadow-lg overflow-hidden;
+  }
+  
+  /* Header */
+  .investor-list__header {
+    @apply px-4 py-3 bg-gray-50 border-b border-gray-200;
+  }
+  
+  .investor-list__title {
+    @apply text-lg font-semibold text-gray-800;
+  }
+  
+  /* List container */
+  .investor-list__container {
+    @apply divide-y divide-gray-200;
+  }
+  
+  /* List item */
+  .investor-list__item {
+    @apply hover:bg-gray-50 cursor-pointer;
+  }
+  
+  .investor-list__item--selected {
+    @apply bg-blue-50;
+  }
+  
+  /* Item content */
+  .investor-list__item-content {
+    @apply px-4 py-4 flex items-center justify-between;
+  }
+  
+  /* Left section with icon and details */
+  .investor-list__item-info {
+    @apply flex items-center space-x-3;
+  }
+  
+  .investor-list__icon-container {
+    @apply flex-shrink-0;
+  }
+  
+  .investor-list__icon {
+    @apply h-6 w-6 text-gray-400;
+  }
+  
+  .investor-list__details {
+    @apply flex flex-col;
+  }
+  
+  .investor-list__name {
+    @apply text-sm font-medium text-gray-900;
+  }
+  
+  .investor-list__metadata {
+    @apply text-sm text-gray-500;
+  }
+  
+  /* Right section with amount and chevron */
+  .investor-list__item-actions {
+    @apply flex items-center space-x-4;
+  }
+  
+  .investor-list__amount {
+    @apply text-sm font-medium text-gray-900;
+  }
+  
+  .investor-list__chevron {
+    @apply h-5 w-5 text-gray-400;
+  }

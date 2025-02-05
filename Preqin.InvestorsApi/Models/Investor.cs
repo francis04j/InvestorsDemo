@@ -23,5 +23,5 @@ public class Investor
         [Column("last_updated")]
         public DateTime LastUpdated { get; set; }
         
-        public List<Commitment> Commitments { get; set; } = new();
+        public ICollection<Commitment>? Commitments { get; set; }
     }

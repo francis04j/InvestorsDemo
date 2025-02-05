@@ -1,6 +1,8 @@
 import React from 'react';
 import { Investor } from '../types';
 import { Building2, ChevronRight } from 'lucide-react';
+import formatAmount from '../utils/formatAmount';
+import '../styles/investor-list.css';
 
 interface InvestorListProps {
   investors: Investor[];
@@ -13,59 +15,55 @@ export const InvestorList: React.FC<InvestorListProps> = ({
   onSelectInvestor,
   selectedInvestor,
 }) => {
-  const formatAmount = (amount: number) => {
-    //console.log('Formatting amount:', amount);
-    if (isNaN(amount)) {
-      return '£0.00';
-    }
-    return new Intl.NumberFormat('en-GB', {
-      style: 'currency',
-      currency: 'GBP',
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(amount);
-  };
-
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden" data-testid="investor-list">
-      <div className="px-4 py-3 bg-gray-50 border-b border-gray-200">
-        <h2 className="text-lg font-semibold text-gray-800" data-testid="list-title">Investors</h2>
+    <div className="investor-list" data-testid="investor-list">
+      <div className="investor-list__header">
+        <h2 className="investor-list__title" data-testid="list-title">Investors</h2>
       </div>
-      <ul className="divide-y divide-gray-200" data-testid="investors-container">
+      <ul className="investor-list__container" data-testid="investors-container">
         {investors.map((investor) => (
           <li
             key={investor.investorId}
             data-testid={`investor-item-${investor.investorId}`}
-            className={`hover:bg-gray-50 cursor-pointer ${
-              selectedInvestor?.investorId === investor.investorId ? 'bg-blue-50' : ''
+            className={`investor-list__item ${
+              selectedInvestor?.investorId === investor.investorId ? 'investor-list__item--selected' : ''
             }`}
             onClick={() => onSelectInvestor(investor)}
           >
-            <div className="px-4 py-4 flex items-center justify-between">
-              <div className="flex items-center space-x-3">
-                <div className="flex-shrink-0">
-                  <Building2 className="h-6 w-6 text-gray-400" data-testid={`investor-icon-${investor.investorId}`} />
+            <div className="investor-list__item-content">
+              <div className="investor-list__item-info">
+                <div className="investor-list__icon-container">
+                  <Building2 
+                    className="investor-list__icon" 
+                    data-testid={`investor-icon-${investor.investorId}`} 
+                  />
                 </div>
-                <div>
-                  <p className="text-sm font-medium text-gray-900" data-testid={`investor-name-${investor.investorId}`}>
+                <div className="investor-list__details">
+                  <p 
+                    className="investor-list__name" 
+                    data-testid={`investor-name-${investor.investorId}`}
+                  >
                     {investor.name}
                   </p>
-                  <p className="text-sm text-gray-500" data-testid={`investor-details-${investor.investorId}`}>
+                  <p 
+                    className="investor-list__metadata" 
+                    data-testid={`investor-details-${investor.investorId}`}
+                  >
                     {investor.type} • {investor.country}
                   </p>
                 </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <div className="text-right">
+              <div className="investor-list__item-actions">
+                <div>
                   <p 
-                    className="text-sm font-medium text-gray-900"
+                    className="investor-list__amount"
                     data-testid={`investor-commitment-${investor.investorId}`}
                   >
                     {formatAmount(investor.totalCommitments)}
                   </p>
                 </div>
                 <ChevronRight 
-                  className="h-5 w-5 text-gray-400"
+                  className="investor-list__chevron"
                   data-testid={`investor-chevron-${investor.investorId}`}
                 />
               </div>

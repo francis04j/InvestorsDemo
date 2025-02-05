@@ -52,7 +52,7 @@ describe('InvestorDetail', () => {
           />
         );
     
-        expect(screen.getByTestId('total-commitments')).toHaveTextContent('Total Commitments: £150,000,000');
+        expect(screen.getByTestId('total-commitments')).toHaveTextContent('Total Commitments: £150M');
       });
 
       it('renders all commitment items', () => {
@@ -67,10 +67,10 @@ describe('InvestorDetail', () => {
     
         expect(screen.getByTestId('commitment-item-0')).toBeInTheDocument();
         expect(screen.getByTestId('asset-class-0')).toHaveTextContent('Infrastructure');
-        expect(screen.getByTestId('amount-0')).toHaveTextContent('£50,000,000');
+        expect(screen.getByTestId('amount-0')).toHaveTextContent('£50M');
     
         expect(screen.getByTestId('commitment-item-1')).toBeInTheDocument();
         expect(screen.getByTestId('asset-class-1')).toHaveTextContent('Real Estate');
-        expect(screen.getByTestId('amount-1')).toHaveTextContent('£100,000,000');
+        expect(screen.getByTestId('amount-1')).toHaveTextContent('£100M');
       });
 });
