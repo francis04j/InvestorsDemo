@@ -6,4 +6,5 @@ namespace Preqin.InvestorsApi.DataMappers;
 public interface IInvestorMapper
 {
     InvestorSummaryDto Map(Investor investor);
+    IEnumerable<InvestorSummaryDto> Map(IQueryable<Investor> investor);
 }

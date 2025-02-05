@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Preqin.InvestorsApi.Data;
+using Preqin.InvestorsApi.DataMappers;
+using Preqin.InvestorsApi.DataService;
 using Preqin.InvestorsApi.DTOs;
 
 namespace Preqin.InvestorsApi.Controllers;
@@ -10,20 +12,23 @@ namespace Preqin.InvestorsApi.Controllers;
 public class InvestorsController : ControllerBase
 {
     private readonly IInvestorRepository _repository;
+    private readonly IInvestorDataService _investorDataService;
     private readonly ILogger<InvestorsController> _logger;
 
-    public InvestorsController(IInvestorRepository repository, ILogger<InvestorsController> logger)
+    public InvestorsController(IInvestorRepository repository, ILogger<InvestorsController> logger,
+        IInvestorDataService investorDataService)
     {
         _repository = repository;
         _logger = logger;
+        _investorDataService = investorDataService;
     }
 
     // GET: api/investors
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<InvestorSummaryDto>>> GetInvestors()
+    public ActionResult<IEnumerable<InvestorSummaryDto>> GetInvestors()
     {
         _logger.LogInformation("Getting investors list");
-        var investors = await _repository.GetInvestorsAsync();
+        var investors = _investorDataService.GetSummaryForAllInvestors();
         _logger.LogInformation("Returning investors list");
         return Ok(investors);
     }

@@ -15,33 +15,17 @@ namespace Preqin.InvestorsApi.Data
             _logger = logger;
         }
 
-        public async Task<IEnumerable<InvestorSummaryDto>> GetInvestorsAsync()
+        public IQueryable<Investor> GetInvestors()
         {
             try
             {
-                var investors = await _context.Investors
-                    .Select(i => new InvestorSummaryDto
-                    {
-                        InvestorId = i.InvestorId,
-                        Name = i.Name,
-                        Type = i.Type,
-                        Country = i.Country,
-                        TotalCommitments = i.Commitments.Sum(c => c.Amount)
-                    })
-                    .ToListAsync();
-
-                if (investors == null || !investors.Any())
-                {
-                    _logger.LogWarning("No investors found.");
-                    return Enumerable.Empty<InvestorSummaryDto>();
-                }
-
+                var investors =  _context.Investors;
                 return investors;
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while retrieving investors.");
-                throw new Exception("An error occurred while retrieving investors.", ex);
+                throw;
             }
         }
 
@@ -78,7 +62,7 @@ namespace Preqin.InvestorsApi.Data
             catch (Exception ex)
             {
                 _logger.LogError(ex, "An error occurred while retrieving commitments for investor with ID {InvestorId}.", investorId);
-                throw new Exception("An error occurred while retrieving commitments.", ex);
+                throw;
             }
         }
     }
